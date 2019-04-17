@@ -15,7 +15,7 @@ someinternalhost_IP = 10.132.0.5
  ssh -At pavel@104.199.7.33 ssh pavel@10.132.0.5
 
 # Подключение к someinternalhost через bastion по ssh-алиасу
-# 1. Добавить в  ~/./ssh/config:
+# 1. Добавить в  ~/.ssh/config:
 	Host someinternalhost
 		HostName someinternalhost_ip
 		User someinternalhost_user
