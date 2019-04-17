@@ -30,3 +30,25 @@ someinternalhost_IP = 10.132.0.5
 # 2. Теперь можно подключаться по алиасу "someinternalhost"
  ssh someinternalhost
 
+
+# Homework #4
+
+testapp_IP = 35.205.92.144
+testapp_port = 9292
+
+# Create VM and use startup script
+gcloud compute instances create reddit-app\
+  --boot-disk-size=10GB \
+  --image-family ubuntu-1604-lts \
+  --image-project=ubuntu-os-cloud \
+  --machine-type=g1-small \
+  --tags puma-server \
+  --restart-on-failure \
+  --metadata-from-file startup-script=/home/pavel/projects/PavelSemyannikov_infra/startup_script.sh
+
+# Create Firewall rule
+gcloud compute firewall-rules create default-puma-server\
+ --direction=INGRESS \
+ --source-ranges=0.0.0.0/0 \
+ --allow=tcp:9292 \
+ --target-tags=puma-server
