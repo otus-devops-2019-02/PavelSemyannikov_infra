@@ -57,8 +57,10 @@ gcloud compute firewall-rules create default-puma-server\
  
  Пример конфига шаблона gcp для packer. Переменные можно передавать из файла или аргументами (-var-file=path vs -var 'key=value')
  
+ 
  variables.json
- {
+ 
+	{
         "project_id" : "gcp-project-id",
         "source_image_family" : "ubuntu-1604-lts",
         "machine_type": "f1-micro",
@@ -67,11 +69,13 @@ gcloud compute firewall-rules create default-puma-server\
         "disk_type" : "pd-standard",
         "network" : "default",
         "tags" : "puma-server"
-}
+ 	 }
+ 
  
  config.json
- {
-    "variables": {
+  
+  	{
+     	"variables": {
         "project_id": null,
         "source_image_family": null,
         "machine_type": "f1-micro",
@@ -80,10 +84,9 @@ gcloud compute firewall-rules create default-puma-server\
         "disk_type" : "pd-standard",
         "network" : "default",
         "tags" : ""
-    },
-
-    "builders": [
-        {
+   	 },
+	"builders": [
+            {
             "type": "googlecompute",
             "project_id": "{{ user `project_id` }}",
             "image_name": "reddit-base-{{timestamp}}",
@@ -97,23 +100,23 @@ gcloud compute firewall-rules create default-puma-server\
             "disk_type": "{{ user `disk_type` }}",
             "network": "{{ user `network` }}",
             "tags": "{{ user `tags` }}"
-        }
-    ],
-
-    "provisioners": [
-        {
+            }
+         ],
+        "provisioners": [
+            {
             "type": "shell",
             "script": "somescript.sh",
             "execute_command": "sudo {{.Path}}"
-        },
+             }
+	  ]
 
 Проверка
-packer validate -var-file=variables.json config.json
+	packer validate -var-file=variables.json config.json
 
 Сборка
-packer build -var-file=variables.json config.json
+	packer build -var-file=variables.json config.json
 
-Инофрмация о шаблоне
-packer inspect config.json
+Информация о шаблоне
+	packer inspect config.json
 
 
