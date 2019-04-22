@@ -1,0 +1,10 @@
+{
+	"project_id" : "infra-111111",
+	"source_image_family" : "ubuntu-1604-lts",
+        "machine_type": "f1-micro",
+        "image_description" : "packer image otus-devops 2019-02",
+        "disk_size" : "10",
+        "disk_type" : "pd-standard",
+        "network" : "default",
+        "tags" : "puma-server"
+}

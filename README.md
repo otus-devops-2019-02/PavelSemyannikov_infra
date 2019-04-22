@@ -52,3 +52,71 @@ gcloud compute firewall-rules create default-puma-server\
  --source-ranges=0.0.0.0/0 \
  --allow=tcp:9292 \
  --target-tags=puma-server
+ 
+ # Homework #5
+ 
+ Пример конфига шаблона gcp для packer. Переменные можно передавать из файла или аргументами (-var-file=path vs -var 'key=value')
+ 
+ 
+ variables.json
+ 
+	{
+        "project_id" : "gcp-project-id",
+        "source_image_family" : "ubuntu-1604-lts",
+        "machine_type": "f1-micro",
+        "image_description" : "packer image otus-devops 2019-02",
+        "disk_size" : "10",
+        "disk_type" : "pd-standard",
+        "network" : "default",
+        "tags" : "puma-server"
+ 	 }
+ 
+ 
+ config.json
+  
+  	{
+     	"variables": {
+        "project_id": null,
+        "source_image_family": null,
+        "machine_type": "f1-micro",
+        "image_description" : "packer image",
+        "disk_size" : "10",
+        "disk_type" : "pd-standard",
+        "network" : "default",
+        "tags" : ""
+   	 },
+	"builders": [
+            {
+            "type": "googlecompute",
+            "project_id": "{{ user `project_id` }}",
+            "image_name": "reddit-base-{{timestamp}}",
+            "image_family": "reddit-base",
+            "source_image_family": "{{ user `source_image_family` }}",
+            "zone": "europe-west1-b",
+            "ssh_username": "appuser",
+            "machine_type": "{{ user `machine_type` }}",
+            "image_description": "{{ user `image_description` }}",
+            "disk_size": "{{ user `disk_size` }}",
+            "disk_type": "{{ user `disk_type` }}",
+            "network": "{{ user `network` }}",
+            "tags": "{{ user `tags` }}"
+            }
+         ],
+        "provisioners": [
+            {
+            "type": "shell",
+            "script": "somescript.sh",
+            "execute_command": "sudo {{.Path}}"
+             }
+	  ]
+
+Проверка
+	packer validate -var-file=variables.json config.json
+
+Сборка
+	packer build -var-file=variables.json config.json
+
+Информация о шаблоне
+	packer inspect config.json
+
+
