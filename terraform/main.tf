@@ -25,10 +25,6 @@ resource "google_compute_instance" "app" {
     access_config = {}
   }
 
-  metadata {
-    ssh-keys = "appuser:${file("${var.public_key_path}")}"
-  }
-
   connection {
     type        = "ssh"
     user        = "appuser"
@@ -57,4 +53,9 @@ resource "google_compute_firewall" "firewall_puma" {
 
   source_ranges = ["0.0.0.0/0"]
   target_tags   = ["reddit-app"]
+}
+
+resource "google_compute_project_metadata_item" "default" {
+  key   = "ssh-keys"
+  value = "appuser:${file("${var.public_key_path}")}\nappuser1:${file("${var.public_key_path}")}\nappuser2:${file("${var.public_key_path}")}"
 }
