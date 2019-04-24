@@ -133,6 +133,7 @@ gcloud compute firewall-rules create default-puma-server\
 При копировании в лоб однотипных инстансов в terraform конфиг забивается ненужным однотипным мусором. 
 Лучше использовать параметр count, а в именах инстансов, например, переменную "count.index"
 Пример:
+
 	resource "google_compute_instance" "app" {
 	  count        = "3"
 	  name         = "reddit-app-${count.index}"
