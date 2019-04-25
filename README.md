@@ -53,9 +53,9 @@ gcloud compute firewall-rules create default-puma-server\
  --allow=tcp:9292 \
  --target-tags=puma-server
  
- # Homework #5
+# Homework #5
  
- Пример конфига шаблона gcp для packer. Переменные можно передавать из файла или аргументами (-var-file=path vs -var 'key=value')
+Пример конфига шаблона gcp для packer. Переменные можно передавать из файла или аргументами (-var-file=path vs -var 'key=value')
  
  
  variables.json
@@ -118,5 +118,25 @@ gcloud compute firewall-rules create default-puma-server\
 
 Информация о шаблоне
 	packer inspect config.json
+
+# Homework #6 Terraform-1
+
+Добавление ssh-ключей проекта на примере нескольких пользователей (appuser, appuser1, appuser2
+
+	resource "google_compute_project_metadata_item" "default" {
+	  key   = "ssh-keys"
+	  value = "appuser:${file("${var.public_key_path}")}\nappuser1:${file("${var.public_key_path}")}\nappuser2:${file("${var.public_key_path}")}"
+	}
+
+При выполнении terraform apply все ключи в проекте заменяются на указанные в terraform, т.е. вручную добавлять нет смысла.
+
+При копировании в лоб однотипных инстансов в terraform конфиг забивается ненужным однотипным мусором. 
+Лучше использовать параметр count, а в именах инстансов, например, переменную "count.index"
+Пример:
+
+	resource "google_compute_instance" "app" {
+	  count        = "3"
+	  name         = "reddit-app-${count.index}"
+
 
 
