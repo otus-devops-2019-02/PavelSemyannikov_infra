@@ -8,7 +8,7 @@ module "storage-bucket" {
   source  = "SweetOps/storage-bucket/google"
   version = "0.1.1"
 
-  name = ["storage-bucket-pavel-otus-devops", "storage-bucket-pavel-otus-devops2"]
+  name = ["storage-bucket-pavel-s-otus-devops-states"]
 }
 
 output storage-bucket_url {

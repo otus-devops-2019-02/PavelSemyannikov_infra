@@ -18,6 +18,22 @@ resource "google_compute_instance" "db" {
   metadata {
     ssh-keys = "appuser:${file(var.public_key_path)}"
   }
+
+  connection {
+    type        = "ssh"
+    user        = "appuser"
+    agent       = false
+    private_key = "${file("${var.private_key_path}")}"
+  }
+
+  provisioner "file" {
+    source      = "../modules/db/files/mongod.conf"
+    destination = "/tmp/mongod.conf"
+  }
+
+  provisioner "remote-exec" {
+    script = "../modules/db/files/deploy.sh"
+  }
 }
 
 resource "google_compute_firewall" "firewall_mongo" {
