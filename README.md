@@ -139,4 +139,24 @@ gcloud compute firewall-rules create default-puma-server\
 	  name         = "reddit-app-${count.index}"
 
 
+# Homework #7 Terraform-2
 
+Пример файла backend.tf при хранении state в бакете gcloud
+
+	terraform {
+	  backend "gcs" {
+	    bucket = "storage-bucket-pavel-s-otus-devops-states"
+	    prefix = "stage"
+	  }
+	}
+
+Можно работать с таким стэйтом из любого места, где есть конфиги. При одновременном apply стэйт лочиться пока не отработает у первого запустившего.
+Attention! Главное случайно не убить сам бакет, особенно если он создавался средствами terraform
+
+При развертывании stage и prod инфраструктуры можно добавить префикс (данном случае переменная infra_prefix) чтобы они не конфликтовали, эту переменную нужно
+добавить во все конфликтующие места в модулях (имена, тэги и т.п.)
+
+При использовании провижинга и модулей пути к файлам используемый провиженером нужно писать относительно папки из которой запускается terraform, 
+т.е. не "files/script.sh", а "../modules/app/files/script.sh"
+
+Output-переменные из модулей можно юзать в основных конфигах как "module.module_name.output_var_name"
