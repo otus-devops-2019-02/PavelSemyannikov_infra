@@ -160,3 +160,14 @@ Attention! Главное случайно не убить сам бакет, о
 т.е. не "files/script.sh", а "../modules/app/files/script.sh"
 
 Output-переменные из модулей можно юзать в основных конфигах как "module.module_name.output_var_name"
+
+# Homework #8 Ansible-1
+
+После удаления папки с reddit изменилось значение changes т.к. плейбук выполнил клонирование. 
+Ранее changes было равно 0, т.к. приложение уже было и модуль git не выполнял никаких действий на app.
+
+Для динамического инвентори написан скрипт на python с использованием модуля google-api-python-client. 
+При вызове скрипта "./inventory.py --list" возвращаеться json со списком хостов по группам app, db и others (в others хосты не попавшие в другие группы). Пустые группы не возвращаются.
+В ansible.cfg в качестве inventory прописан это скрипт. 
+Файл inventory.json не нужен, но по условиям задачи он должен быть, поэтому сделал его так "./inventory.py --list > inventory.json".
+Зависимость google-api-python-client добавлена в requirements.txt
