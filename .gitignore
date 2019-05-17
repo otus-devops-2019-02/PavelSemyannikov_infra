@@ -6,3 +6,4 @@ packer/variables.json
 .terraform/
 .vscode/
 *.retry
+.gcp.json
