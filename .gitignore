@@ -5,3 +5,6 @@ packer/variables.json
 *.tfvars
 .terraform/
 .vscode/
+*.retry
+.gce.json
+gce.ini

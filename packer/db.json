@@ -1,7 +1,7 @@
 {
     "variables": {
 	"project_id": null,
-        "source_image_family": null,
+    "source_image_family": null,
 	"machine_type": "f1-micro",
 	"image_description" : "packer image",
 	"disk_size" : "10",
@@ -21,7 +21,7 @@
             "ssh_username": "appuser",
             "machine_type": "{{ user `machine_type` }}",
             "image_description": "{{ user `image_description` }}",
-	    "disk_size": "{{ user `disk_size` }}",
+	        "disk_size": "{{ user `disk_size` }}",
             "disk_type": "{{ user `disk_type` }}",
             "network": "{{ user `network` }}",
             "tags": "{{ user `tags` }}"
@@ -30,9 +30,9 @@
 
     "provisioners": [
         {
-            "type": "shell",
-            "script": "scripts/install_mongodb.sh",
-            "execute_command": "sudo {{.Path}}"
+            "type": "ansible",
+            "playbook_file": "ansible/packer_db.yml",
+            "user": "appuser"
         }
     ]
 }
