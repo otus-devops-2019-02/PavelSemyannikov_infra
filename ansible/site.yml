@@ -1,7 +1,6 @@
 ---
 - import_playbook: db.yml
-  when: "'db' in inventory_hostname"
-
+  
 - import_playbook: app.yml
 
 - import_playbook: deploy.yml
