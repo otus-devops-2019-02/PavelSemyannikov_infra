@@ -1,0 +1,36 @@
+401 Git checkouts must contain explicit version
+playbooks/clone.yml:5
+Task/Handler: Clone repo
+
+201 Trailing whitespace
+playbooks/packer_db.yml:5
+     
+
+201 Trailing whitespace
+playbooks/packer_db.yml:11
+  
+
+201 Trailing whitespace
+playbooks/packer_db.yml:21
+    notify: 
+
+201 Trailing whitespace
+playbooks/reddit_app_multiple_plays.yml:55
+  
+
+201 Trailing whitespace
+playbooks/reddit_app_one_play.yml:22
+    
+
+201 Trailing whitespace
+playbooks/reddit_app_one_play.yml:30
+    
+
+201 Trailing whitespace
+playbooks/reddit_app_one_play.yml:37
+    
+
+201 Trailing whitespace
+playbooks/reddit_app_one_play.yml:62
+    
+
