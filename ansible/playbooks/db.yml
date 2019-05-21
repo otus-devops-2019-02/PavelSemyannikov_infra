@@ -3,5 +3,5 @@
   hosts: db
   become: true
 
-  roles: 
+  roles:
     - role: db

@@ -8,7 +8,7 @@
     src: puma.service
     dest: /etc/systemd/system/puma.service
   notify: reload puma
-  
+
 - name: Add config for DB connection
   template:
     src: db_config.j2
@@ -16,6 +16,6 @@
     owner: appuser
     group: appuser
   notify: reload puma
- 
+
 - name: Enable Puma
   systemd: name=puma enabled=yes
