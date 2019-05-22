@@ -1,6 +1,6 @@
 ---
 - name: Deploy app
-  hosts: app
+  hosts: all
 
   tasks:
   - name: Fetch the latest version of application code

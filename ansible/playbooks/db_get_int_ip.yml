@@ -1,0 +1,11 @@
+---
+- name: Configure DB
+  hosts: all
+  become: true
+
+  tasks:
+    - set_fact: db_host="{{ ansible_default_ipv4.address }}"
+      delegate_to: "{{ item }}"
+      with_items: "{{ play_hosts }}"
+      delegate_facts: True
+      when: "'db' in inventory_hostname"

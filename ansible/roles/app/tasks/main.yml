@@ -3,6 +3,10 @@
   debug:
     msg: "This host is in {{ env }} environment!!!"
 
+- name: Show info about DB host internal IP
+  debug:
+    msg: "DB host internal IP is {{ db_host }}"
+
 - name: Add unit file for Puma
   copy:
     src: puma.service
