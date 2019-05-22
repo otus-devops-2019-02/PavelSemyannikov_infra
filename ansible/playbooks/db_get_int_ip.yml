@@ -4,7 +4,8 @@
   become: true
 
   tasks:
-    - set_fact: db_host="{{ ansible_default_ipv4.address }}"
+    - name: Set db_host variable
+      set_fact: db_host="{{ ansible_default_ipv4.address }}"
       delegate_to: "{{ item }}"
       with_items: "{{ play_hosts }}"
       delegate_facts: True
