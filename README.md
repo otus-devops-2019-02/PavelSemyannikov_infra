@@ -1,3 +1,5 @@
+https://img.shields.io/badge/homework-complete-yellow.svg
+
 # PavelSemyannikov_infra
 PavelSemyannikov Infra repository
 
