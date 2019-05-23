@@ -1,3 +1,4 @@
+[![Homeworks](https://img.shields.io/badge/homework-complete-yellow.svg](https://img.shields.io/badge/homework-complete-yellow.svg)
 https://img.shields.io/badge/homework-complete-yellow.svg
 
 # PavelSemyannikov_infra
