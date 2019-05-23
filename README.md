@@ -1,5 +1,4 @@
-[![Homeworks](https://img.shields.io/badge/homework-complete-yellow.svg](https://img.shields.io/badge/homework-complete-yellow.svg)
-https://img.shields.io/badge/homework-complete-yellow.svg
+[![Build Status](https://api.travis-ci.com/otus-devops-2019-02/PavelSemyannikov_infra.svg)](https://api.travis-ci.com/otus-devops-2019-02/PavelSemyannikov_infra)
 
 # PavelSemyannikov_infra
 PavelSemyannikov Infra repository
