@@ -8,3 +8,5 @@ packer/variables.json
 *.retry
 .gce.json
 gce.ini
+jdauphant.nginx
+vault.key

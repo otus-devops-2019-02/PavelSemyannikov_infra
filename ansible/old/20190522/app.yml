@@ -1,0 +1,11 @@
+---
+- name: Configure App
+  hosts: all
+  become: true
+  
+  vars:
+    db_host: 10.132.0.8
+  
+  roles: 
+    - { role: app, when: "'app' in inventory_hostname" }
+  

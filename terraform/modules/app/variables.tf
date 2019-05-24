@@ -23,3 +23,4 @@ variable app_disk_image {
 #variable db_internal_ip {
 #  description = "DB instance internal IP"
 #}
+
