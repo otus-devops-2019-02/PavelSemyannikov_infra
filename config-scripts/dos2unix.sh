@@ -1,6 +1,6 @@
 #!/bin/bash
 
-workdir="/home/pavel/projects/PavelSemyannikov_infra/ansible"
+workdir="/mnt/c/Users/pavel/projects/PavelSemyannikov_infra/ansible"
 
 cd $workdir
 
