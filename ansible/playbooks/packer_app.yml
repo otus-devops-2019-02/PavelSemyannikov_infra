@@ -1,5 +1,5 @@
 ---
-- name: Install app requirements
+- name: Configure APP template
   hosts: all
   become: true
   
