@@ -17,4 +17,4 @@ vagrant/
 .cache
 .pytest_cache
 .vagrant/
-python-virtual-environments
+python-virtual-environments/
