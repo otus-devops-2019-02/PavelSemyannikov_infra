@@ -1,13 +1,15 @@
 ---
-- import_playbook: db.yml
-  when: "'db' in inventory_hostname"
+- import_playbook: base.yml
 
-- import_playbook: db_get_int_ip.yml
+- import_playbook: db.yml
+  #when: "'db' in inventory_hostname"
+
+#- import_playbook: db_get_int_ip.yml
 
 - import_playbook: app.yml
-  when: "'app' in inventory_hostname"
+  #when: "'app' in inventory_hostname"
 
 - import_playbook: deploy.yml
-  when: "'app' in inventory_hostname"
+  #when: "'app' in inventory_hostname"
 
-- import_playbook: users.yml
+#- import_playbook: users.yml

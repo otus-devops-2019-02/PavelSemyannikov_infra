@@ -199,4 +199,26 @@ trytravis - мега штука для отладки проверок.
 gce.py умеет фильтровать хосты по тэгам, но не умеет (надеюсь пока) по label.
 ansible-galaxy знает про кучу ролей, но видимо нужно смотреть что внутри роли происходит. 
 
+# Homework #11 Ansible-4
 
+В провижионе пакера можно передавать extra параметры, пример:
+
+	"provisioners": [
+        	{
+            		"type": "ansible",
+            		"ansible_env_vars": [ "ANSIBLE_ROLES_PATH=ansible/roles" ],
+            		"extra_arguments": [ "--tags=ruby" ],
+            		"playbook_file": "ansible/playbooks/packer_app.yml",
+            		"user": "appuser"
+        	}
+    	]
+
+Molecule в качестве рабочей папки использует /tmp/molecule. Логи и прочее надо искать там.
+SSH-ключ который она генерит нужно добавить в ssh-agent если есть ошибки подключения.
+
+На WSL все работает, но Vagrant должен стоять как на винде, так и в wsl (одинаковой версии). Также нужно добавить кстомные опции в конфиг провайдера:
+ 	
+	config.vm.provider :virtualbox do |v|
+    		v.memory = 1024
+    		v.customize [ "modifyvm", :id, "--uartmode1", "disconnected" ]
+  	end

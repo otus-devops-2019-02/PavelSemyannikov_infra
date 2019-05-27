@@ -1,16 +1,7 @@
 ---
-- name: Install app requirements
+- name: Configure APP template
   hosts: all
   become: true
 
-  vars:
-    packages:
-    - ruby-full
-    - ruby-bundler
-    - build-essential
-
-  tasks:
-    - name: Install a list of packages
-      apt:
-        name: "{{ packages }}"
-        update_cache: yes
+  roles:
+    - role: app
